@@ -1,0 +1,23 @@
+<h1>My todos:</h1>
+
+<label>
+  Add an item:
+  <input
+    type="text"
+    [(ngModel)]="newTodoTitle"
+    required
+    #titleInput="ngModel"
+  />
+</label>
+<button role="button" [disabled]="!titleInput.valid" (click)="addTodo()">
+  Add
+</button>
+
+<hr />
+
+<ul>
+  <li *ngFor="let todo of todos$ | async">
+    <input type="checkbox" [name]="todo.title" [checked]="todo.done" />
+    {{ todo.title }}
+  </li>
+</ul>
